@@ -140,17 +140,23 @@ export class HomeComponent {
     this.imgloser.push(loser);
     console.log(this.imgwinner);
     console.log(this.imgloser);
-
+    console.log(winner);
+    console.log(loser);
+    console.log(winner.uid);
+    
+    
+        winner.point = winnerNewRating + winner.point;
+        loser.point = loserNewRating + loser.point;
+        console.log(winner.point);
+        console.log(loser.point);
+       
+        
     const checkwinner = await this.getimg.InsertVote(winner.uid,winner.picture_id,winnerNewRating,winner.isWinner);
     const checkloser  = await this.getimg.InsertVote(loser.uid,loser.picture_id,loserNewRating,loser.isLoser);
-    
-    winner.point = winnerNewRating + winner.point;
-    loser.point = loserNewRating + loser.point;
+
     if(checkwinner === true && checkloser === true){
       await this.getimg.Updateimg(winner.picture_id,winner.point);
       await this.getimg.Updateimg(loser.picture_id,loser.point);
     }
   }
-  
 }
-
