@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule,Router} from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
 import { GetImg } from '../model/img';
 import { Getimgservice } from '../service/getimgservice';
 import { user } from '../model/model';
@@ -9,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatToolbarModule,RouterModule,CommonModule],
+  imports: [MatToolbarModule,RouterModule,CommonModule,MatCardModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
