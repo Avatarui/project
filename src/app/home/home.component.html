@@ -22,15 +22,39 @@
         </div>
     </div>
 
-    <div class="wrapper">
-        <div class="img-1">
-            <img src="../../../assets/img/American Shorthair.png" alt="">
-        </div>
-
-        <div class="img-2">
-            <img src="../../../assets/img/Chinchillacat.png" alt="">
-        </div>
+    <div class="voting-container">
+        <div *ngIf="show && selectedImages && selectedImages.length >= 2" >
+        <mat-card>
+          <mat-card-header>
+            <h3>{{selectedImages[0].description}}</h3>
+          </mat-card-header>
+          <div class="img-1">
+                <div class="image-container" (click)="onImageClick(0)">
+                  <img [src]="selectedImages[0].url" alt="Image 1">
+                </div>
+            </div>
+        </mat-card>
+      </div>
+      </div>
+      <div *ngIf="show">
+      <!-- <div class="vs">
+        <img src="https://cdn-icons-png.flaticon.com/256/4499/4499401.png" alt="VS">
+      </div> -->
     </div>
+      <div class="voting-container">
+        <div *ngIf="show && selectedImages && selectedImages.length >= 2">
+        <mat-card>
+          <mat-card-header>
+            <h3>{{selectedImages[1].description}}</h3>
+          </mat-card-header>
+          <div class="img-2">
+              <div class="image-container" (click)="onImageClick(1)">
+                <img [src]="selectedImages[1].url" alt="Image 2">
+              </div>
+          </div>
+        </mat-card>
+            </div>
+        </div>
 
     <div class="title-cilck">
          <h3>Click on the image to vote</h3>
