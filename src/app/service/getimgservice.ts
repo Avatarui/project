@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { GetImg } from '../model/img';
 import { Constants } from '../config/constans';
+import { RatingToday, Vote } from '../model/rating';
 @Injectable({
   providedIn: 'root',
 })
@@ -51,5 +52,24 @@ export class Getimgservice {
     } catch (error) {
       throw error;
     }
+  }
+
+  public async RatingToday() {
+    const url = this.constants.API_ENDPOINT + '/rating/yesterday';
+    const response = await lastValueFrom(this.http.get(url));
+    return response as RatingToday[];
+  }
+  public async RatingYesterday() {
+    const url = this.constants.API_ENDPOINT + '/rating/today';
+    const response = await lastValueFrom(this.http.get(url));
+    return response as RatingToday[];
+  }
+  public async Graph(uid:number) {
+    const url = this.constants.API_ENDPOINT + '/rating/graph'+uid;
+    const body = {
+      uid: uid,
+    };
+    const response = await lastValueFrom(this.http.get(url));
+    return response as Vote[];
   }
 }
